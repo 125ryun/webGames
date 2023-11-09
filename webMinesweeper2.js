@@ -5,7 +5,7 @@ var initialClick = 1;
 const fieldElement = document.getElementById('field');
 var buttonElements = [];
 
-const MINE_CNT = 50;
+const MINE_CNT = 10;
 const ROWS = 10;
 const COLS = 10;
 const directions = [
