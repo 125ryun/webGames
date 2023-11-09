@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="./webMinesweeper.css">
+<link rel="stylesheet" href="./style.css">
 
 <html lang="ko">
     <head>
@@ -7,13 +7,17 @@
         <title>온라인 지뢰찾기</title>
     </head>
     <body>
-        <div style="text-align: center;">
-            <h3>지뢰찾기!!</h3>
+        <div id="app">            
+            <div>
+                <h1>지뢰찾기!!</h1>
+                <h3>점수: </h3>
+            </div>
+            <div>
+                <table id="field" cellspacing="5px" oncontextmenu="return false;">
+                </table>
+            </div>
+            <script type="text/javascript" src="./webMinesweeper.js" defer></script>
+            <script type="text/javascript" src="./script.js" defer></script>
         </div>
-        <div>
-            <table id="field" cellspacing="5px" oncontextmenu="return false;">
-            </table>
-        </div>
-        <script type="text/javascript" src="./webMinesweeper.js" defer></script>
     </body>
 </html>
