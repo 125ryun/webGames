@@ -1,4 +1,3 @@
-
 const fieldElement = document.getElementById('field');
 var buttonElements = [];
 var pressed = [];
@@ -55,7 +54,7 @@ async function initData() {
                 
                 showAdjecentCellStatus(row, col);
 
-                if (status == -1) gameOver();
+                if (status == -1) gameover();
 
             });
             btn.addEventListener('contextmenu', (event) => {
@@ -156,7 +155,7 @@ function showCellStatus(row, col) {
     pressed[row][col] = 1;
 }
 
-function gameOver() {
+function gameover() {
     // show answer
 
     alert('gameover!!');
