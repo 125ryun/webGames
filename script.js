@@ -1,12 +1,6 @@
 const fieldElement = document.getElementById('field');
 var buttonElements = [];
 
-var field = [];
-var showed = [];
-var marked = [];
-
-var initialClick = 1;
-
 const MINE_CNT = 10;
 const ROWS = 10;
 const COLS = 10;
@@ -20,6 +14,13 @@ const directions = [
   [1, 0],
   [1, 1],
 ];
+
+var field = [];
+var showed = [];
+var marked = [];
+
+var initialClick = 0;
+var leftSafeCellsCnt = 0;
 
 init();
 
@@ -79,6 +80,7 @@ initGame();
 function initGame() {
   clearField();
   initialClick = 1;
+  leftSafeCellsCnt = ROWS * COLS - MINE_CNT;
 }
 
 function clearField() {
@@ -132,20 +134,23 @@ function onClick(e) {
   const col = e.target.parentElement.cellIndex;
 
   if (initialClick) {
-      initialClick = 0;
-      createMines(row, col);
+    initialClick = 0;
+    createMines(row, col);
   }
 
   if (showed[row][col]) return;
 
   // if gameover or win, end game
   if (field[row][col] == -1) gameover();
-  if (checkWin()) win();
+  // else if (leftSafeCellsCnt == 0) win();
 
   showCell(row, col);
+
+  if (checkWin()) win();
 }
 
 function showCell(row, col) {
+  console.log('showCell');
   if (showed[row][col]) return;
 
   // set bit
@@ -176,8 +181,10 @@ function gameover() {
 };
 
 function checkWin() {
+  console.log('called checkWin');
   for (let i=0; i<ROWS; i++) {
     for (let j=0; j<COLS; j++) {
+      // console.log('check out', i, j);
       if (field[i][j] != -1 && !showed[i][j]) return 0;
     }
   }
@@ -194,7 +201,7 @@ function revealAnswer() {
   for (let i=0; i<ROWS; i++) {
       for (let j=0; j<COLS; j++) {
           if (showed[i][j]) continue;
-          showCell[i][j];
+          showCell(i, j);
       }
   }
 }
@@ -205,7 +212,7 @@ function onRightClick(e) {
 
   if (showed[row][col]) return;
 
-  markCell();
+  markCell(row, col);
 }
 
 function markCell(row, col) {
