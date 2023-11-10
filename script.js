@@ -141,7 +141,10 @@ function onClick(e) {
   if (showed[row][col]) return;
 
   // if gameover or win, end game
-  if (field[row][col] == -1) gameover();
+  if (field[row][col] == -1) {
+    gameover();
+    return;
+  }
   // else if (leftSafeCellsCnt == 0) win();
 
   showCell(row, col);
