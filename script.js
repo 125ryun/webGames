@@ -145,7 +145,6 @@ function onClick(e) {
     gameover();
     return;
   }
-  // else if (leftSafeCellsCnt == 0) win();
 
   showCell(row, col);
 
@@ -165,6 +164,7 @@ function showCell(row, col) {
     buttonElements[row][col].textContent = '💥';
   if (field[row][col] > 0)
     buttonElements[row][col].textContent = field[row][col];
+
   // 주변 지뢰 개수가 0개인 칸을 클릭한 경우
   // 지뢰가 없는 다른 주변 칸의 값을 재귀적으로 깐다
   if (field[row][col] == 0) {
@@ -176,9 +176,11 @@ function showCell(row, col) {
   }
 }
 
+// 경고창 띄우기 이 사이트 참고
+// https://myhappyman.tistory.com/179
+
 function gameover() {
   revealAnswer();
-  // alert("game over");
   setTimeout(() => alert("game over!"), 1);
   // initGame();
 };
@@ -187,7 +189,6 @@ function checkWin() {
   console.log('called checkWin');
   for (let i=0; i<ROWS; i++) {
     for (let j=0; j<COLS; j++) {
-      // console.log('check out', i, j);
       if (field[i][j] != -1 && !showed[i][j]) return 0;
     }
   }
