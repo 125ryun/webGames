@@ -175,8 +175,8 @@ function showCell(row, col) {
 
 function gameover() {
   revealAnswer();
-  alert("game over");
-  // setTimeout(() => alert("game over!"), 1);
+  // alert("game over");
+  setTimeout(() => alert("game over!"), 1);
   // initGame();
 };
 
