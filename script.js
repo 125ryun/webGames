@@ -20,7 +20,6 @@ var showed = [];
 var marked = [];
 
 var initialClick = 0;
-var leftSafeCellsCnt = 0;
 
 init();
 
@@ -80,7 +79,6 @@ initGame();
 function initGame() {
   clearField();
   initialClick = 1;
-  leftSafeCellsCnt = ROWS * COLS - MINE_CNT;
 }
 
 function clearField() {
